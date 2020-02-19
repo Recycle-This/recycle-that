@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView, Text, StyleSheet } from 'react-native';
 
 const ProfileScreen = ({ navigation }) => {
 
