@@ -25,7 +25,13 @@ const LoginScreen = (props) => {
             <TextInput onChangeText={text => setLoginState({ ...loginState, password: text })} style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                 placeholder="Password" />
             <View>
-                <TouchableOpacity onPress = {handleLogin} style={{ borderColor: 'gray', borderWidth: 1 }}><Text>Login</Text></TouchableOpacity>
+                <TouchableOpacity onPress={handleLogin} style={{ borderColor: 'gray', borderWidth: 1 }}><Text>Login</Text></TouchableOpacity>
+            </View>
+            <View>
+                <Text>Forgot your login details?</Text><TouchableOpacity onPress={handleLogin} ><Text>Get help signing in.</Text></TouchableOpacity>
+            </View>
+            <View>
+                <Text>Don't have an account?</Text><TouchableOpacity onPress={handleLogin} ><Text>Sign Up.</Text></TouchableOpacity>
             </View>
         </View>
     )
