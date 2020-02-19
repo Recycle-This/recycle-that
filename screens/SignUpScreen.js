@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, Image, TouchableHighlight, TextInput } from 'react-native'
 
-const SignUp = (props) => {
+const SignUpScreen = (props) => {
     const [signInState, setSignInState] = useState({
         username: "",
         password: "",
@@ -12,15 +12,15 @@ const SignUp = (props) => {
         if (signInState.username.length >= 3) {
             return verifyPassword();
         } else {
-            alert('Character must be at least 3 characters long')
+            Alert.alert('Character must be at least 3 characters long')
         }
     }
 
     const verifyPassword = () => {
-        if (signInState.verifyPassword === signInState.password && signInState.password.length > 1c) {
-            alert('Successful Signup')
+        if (signInState.verifyPassword === signInState.password && signInState.password.length > 1) {
+            Alert.alert('Successful Signup')
         } else {
-            alert('Passwords do not match')
+            Alert.alert('Passwords do not match')
         }
     }
     return (
@@ -36,11 +36,11 @@ const SignUp = (props) => {
                 <TextInput onChangeText={text => setSignInState({ ...signInState, verifyPassword: text })} placeholder="password"></TextInput>
             </View>
             <View>
-                <TouchableOpacity onPress={checkUsernameLength}><Text>Sign Up</Text></TouchableOpacity>
+                <TouchableHighlight onPress={checkUsernameLength}><Text>Sign Up</Text></TouchableHighlight>
             </View>
         </View>
 
     )
 }
 
-export default React.memo(SignUp);
+export default React.memo(SignUpScreen);
