@@ -6,7 +6,7 @@ const ProfileScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>This is the ProfileScreen</Text>
+      <Text>This is the Profile Screen</Text>
     </SafeAreaView>
   );
 };
