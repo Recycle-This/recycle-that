@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+
 const LoginScreen = ({ navigation }) => {
 
   const [loginState, setLoginState] = useState({
@@ -28,6 +29,8 @@ const LoginScreen = ({ navigation }) => {
       alert('Please enter a username & password')
     }
   }
+
+
 
   return (
     <View>

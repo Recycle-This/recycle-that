@@ -35,6 +35,31 @@ const SignUpScreen = ({ navigation }) => {
       Alert.alert('Passwords do not match')
     }
   }
+
+  const handleInputs = () => {
+    /* add a new user to the database */
+    const usernameText = loginState.username
+    const passwordText = loginState.password
+    //needs to increment when users click brownie/"i recycled" button
+    const brownieCounter = 0
+
+    fetch('http://192.168.0.110:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({
+        username: usernameText,
+        password: passwordText,
+        brownie_points: brownieCounter
+        })
+    })
+    .then(res => res.json())
+    .then(res => console.log('fetch res', res))
+    .catch(err => console.log({err: 'err in fetch'}))
+  }
+
+
   return (
     <View>
       <Text>Create UserName</Text>
