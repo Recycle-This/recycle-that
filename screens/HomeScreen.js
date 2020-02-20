@@ -6,6 +6,8 @@ import * as WebBrowser from 'expo-web-browser';
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
+  const top10 = ['Batteries', 'Paper', 'Cardboard', 'Newspapers', 'Plastic Bottles', 'Aluminum Cans', 'Glossy Magazines', 'Glass Containers']
+  
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -13,7 +15,7 @@ export default function HomeScreen() {
           <Image
             source={
               __DEV__
-                ? require('../assets/images/robot-dev.png')
+                ? require('../assets/images/logo.png')
                 : require('../assets/images/robot-prod.png')
             }
             style={styles.welcomeImage}
@@ -23,20 +25,18 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
+          
+          <Text style={styles.getStartedText}>1. Batteries </Text>
 
           <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+            <MonoText>Click here </MonoText>
           </View>
 
-          <Text style={styles.getStartedText}>
-            hi chloe :) 
-          </Text>
         </View>
 
         <View style={styles.helpContainer}>
           <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+            <Text style={styles.helpLinkText}>Click here for Climate News Updates</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -66,8 +66,7 @@ function DevelopmentModeNotice() {
 
     return (
       <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use useful development
-        tools. {learnMoreButton}
+        Top 10 Most Searched Recyclables
       </Text>
     );
   } else {
@@ -110,8 +109,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 200,
+    height: 200,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
