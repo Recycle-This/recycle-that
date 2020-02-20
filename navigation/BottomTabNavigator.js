@@ -1,36 +1,20 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import SearchStackScreen from './SearchStack';
+import ProfileScreenStack from './ProfileStack';
 import TabBarIcon from '../components/TabBarIcon';
-<<<<<<< HEAD
-import SearchScreen from '../screens/SearchScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 
-=======
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import LoginScreen from '../screens/LoginScreen';
-import SignUpScreen from '../screens/SignUpScreen';
->>>>>>> 41a8dae1718674455e1946b3b098353b5655f6c9
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Search';
 
 export default function BottomTabNavigator({ navigation, route }) {
-  // Set the header title on the parent stack navigator depending on the
-  // currently active tab. Learn more in the documentation:
-  // https://reactnavigation.org/docs/en/screen-options-resolution.html
-  navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
-<<<<<<< HEAD
         name="Search"
-        component={SearchScreen}
-=======
-        name="Home"
-        component={SignUpScreen}
->>>>>>> 41a8dae1718674455e1946b3b098353b5655f6c9
+        component={SearchStackScreen}
         options={{
           title: 'Search',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
@@ -38,7 +22,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileScreenStack}
         options={{
           title: 'Profile',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
@@ -46,15 +30,4 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
     </BottomTab.Navigator>
   );
-}
-
-function getHeaderTitle(route) {
-  const routeName = route.state ?.routes[route.state.index] ?.name ?? INITIAL_ROUTE_NAME;
-
-  switch (routeName) {
-    case 'Search':
-      return 'Recycle That!';
-    case 'Profile':
-      return 'Your Recycling';
-  }
 }
