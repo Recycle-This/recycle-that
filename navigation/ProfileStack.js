@@ -28,7 +28,7 @@ const ProfileScreenStack = ({ navigation, route, isSignedIn }) => {
         <ProfileStack.Screen name="Profile" component={ProfileScreen} options={{ headerTitle: props => <LogoTitle {...props} /> }} />
       ) : (
           <>
-            < ProfileStack.Screen name="Sign Up" component={SignUpScreen} />
+            <ProfileStack.Screen name="Sign Up" component={SignUpScreen} />
             <ProfileStack.Screen name="Login" component={LoginScreen} />
           </>
         )
