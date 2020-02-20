@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import {
+  Alert,
   View,
   Text,
   Image,
