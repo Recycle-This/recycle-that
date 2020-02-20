@@ -1,6 +1,11 @@
 import React from 'react';
-
-import { SafeAreaView, Text, TouchableHighlight, View, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  TouchableHighlight,
+} from 'react-native';
 
 const SearchScreen = ({ navigation }) => {
 
@@ -10,9 +15,9 @@ const SearchScreen = ({ navigation }) => {
       <View>
         <TouchableHighlight
           style={styles.navBtn}
-          onPress={() => navigation.navigate('Details')}
+          onPress={() => navigation.navigate('Login')}
         >
-          <Text>Navigate to Details</Text>
+          <Text>Navigate to Login</Text>
         </TouchableHighlight>
       </View>
     </SafeAreaView>
