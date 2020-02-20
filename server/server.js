@@ -8,7 +8,7 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 
-app.use(bodyparser())
+// app.use(bodyparser())
 /**
  * handle parsing request body
  */
@@ -26,11 +26,11 @@ app.post('/users', authController.postUsers, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 /* route for user get */
-app.get('/users', authController.getUsers, (req, res) => {
+app.get('/users/:id', authController.getUsers, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 /* route for user delete */
-app.delete('/users:id', authController.deleteUsers, (req, res) => {
+app.delete('/users/:id', authController.deleteUsers, (req, res) => {
   res.status(200).json({})
 })
 
@@ -40,7 +40,7 @@ app.post('/search', searchController.postSearch, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 /* route for search get */
-app.get('/search:id', searchController.getSearch, (req, res) => {
+app.get('/search', searchController.getSearch, (req, res) => {
   res.json(res.locals.data)
 })
 /* route for search delete */
