@@ -5,7 +5,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 
 function LogoTitle() {
   return (
-    <Image style={{ width: 160, height: 60 }} source={require('../assets/images/logo.png')} />
+    <Image source={require('../assets/images/logo.png')} />
   );
 }
 const ProfileStack = createStackNavigator();
@@ -21,3 +21,4 @@ const ProfileScreenStack = ({ navigation, route }) => {
 };
 
 export default ProfileScreenStack;
+

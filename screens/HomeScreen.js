@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
+    backgroundColor: '#F6D7AF'
   },
   contentContainer: {
     paddingTop: 30,
