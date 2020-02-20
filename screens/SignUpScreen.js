@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import {
   View,
+  Alert,
   Text,
   Image,
   TouchableHighlight,
@@ -26,6 +27,7 @@ const SignUpScreen = ({ navigation }) => {
 
   const checkUsernameLength = () => {
     if (signInState.username.length >= 3) {
+      handlenewUser()
       return verifyPassword();
     } else {
       Alert.alert('Character must be at least 3 characters long')
@@ -40,10 +42,10 @@ const SignUpScreen = ({ navigation }) => {
     }
   }
 
-  const handleInputs = () => {
+  const handlenewUser = () => {
     /* add a new user to the database */
-    const usernameText = loginState.username
-    const passwordText = loginState.password
+    const usernameText = signInState.username
+    const passwordText = signInState.password
     //needs to increment when users click brownie/"i recycled" button
     const brownieCounter = 0
 
@@ -59,8 +61,7 @@ const SignUpScreen = ({ navigation }) => {
         })
     })
     .then(res => res.json())
-    .then(res => console.log('fetch res', res))
-    .catch(err => console.log({err: 'err in fetch'}))
+    .catch(err => console.log({err: 'err in signup post fetch'}))
   }
 
 

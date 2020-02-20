@@ -26,11 +26,11 @@ app.post('/users', authController.postUsers, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 /* route for user get */
-app.get('/users', authController.getUsers, (req, res) => {
+app.get('/users/:id', authController.getUsers, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 /* route for user delete */
-app.delete('/users:id', authController.deleteUsers, (req, res) => {
+app.delete('/users/:id', authController.deleteUsers, (req, res) => {
   res.status(200).json({})
 })
 

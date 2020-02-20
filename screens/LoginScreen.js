@@ -25,12 +25,24 @@ const LoginScreen = ({ navigation }) => {
   const handleLogin = () => {
     if (loginState.username !== '' && loginState.password !== '') {
       alert('Successful Login')
+      handleGetUserData()
     } else {
       alert('Please enter a username & password')
     }
   }
 
-
+  const handleGetUserData = () => {
+    /* get all a users data from database */
+    fetch(`http://192.168.0.110:3000/users/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(res => console.log('fetch res', res))
+    .catch(err => console.log({err: 'err in login get fetch'}))
+  }
 
   return (
     <View>
