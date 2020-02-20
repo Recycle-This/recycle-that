@@ -6,7 +6,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const SearchScreen = ({ navigation }) => {
   const top = ['CFL Lightbulbs', 'Paper','Aluminum Cans','Cardboard', 'Newspapers', 'Plastic Bottles', 'Glass Containers', 'Glossy Magazines','Oil-Based Paints','Christmas Trees'];
-  let topList = top.map((item,i) => {
+  const topList = top.map((item,i) => {
     return(
       <ListItem key={i} noIndent style={{ backgroundColor: "white" }}>
         <Left>
