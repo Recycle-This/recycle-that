@@ -59,11 +59,13 @@ const SearchScreen = ({ navigation }) => {
   });
   return (
     <Container>
-      <Header searchBar rounded style={{ backgroundColor: "green" }}>
+      <Header searchBar rounded style={{ backgroundColor: "#23A75B" }}>
         <Item>
           <Icon name="ios-search" />
           <TextInput onChangeText={text => setSearchInput(text)} placeholder="Search" />
+          <Right style={{marginRight: 10}}>
           <Icon name="ios-people" />
+          </Right>
         </Item>
         <Right style={{ flex: 0.25 }}>
           <Button onPress={handleSearchPress} transparent>
@@ -72,7 +74,7 @@ const SearchScreen = ({ navigation }) => {
         </Right>
       </Header>
       <Content >
-        <Text style={{ textAlign: "center", color: "green", fontWeight: "bold", marginTop: 10, marginBottom: 10 }}>Top 10 Recyclables </Text>
+        <Text style={{ textAlign: "center", color: "#23A75B", fontWeight: "bold", marginTop: 10, marginBottom: 10 }}>Top 10 Recyclables </Text>
         <List style={{ marginRight: 5, marginLeft: 5, borderWidth: 1, borderColor: "#D3D3D3" }}>
           {topList}
         </List>
