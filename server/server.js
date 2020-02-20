@@ -20,36 +20,31 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 // app.get('/', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../App'))
 // })
+
 /* route for user post */
 app.post('/users', authController.postUsers, (req, res) => {
-  //console.log('in app.post in server.js')
   res.status(200).json(res.locals.data)
 })
-// /* route for user get */
+/* route for user get */
 app.get('/users', authController.getUsers, (req, res) => {
-  //console.log('in app.post in server.js')
   res.status(200).json(res.locals.data)
 })
-// // /* route for user delete */
+/* route for user delete */
 app.delete('/users:id', authController.deleteUsers, (req, res) => {
-  //console.log('in app.post in server.js')
   res.status(200).json({})
 })
 
 
-// /* route for search post */
+/* route for search post */
 app.post('/search', searchController.postSearch, (req, res) => {
-  console.log('in app.post in server.js')
   res.status(200).json(res.locals.data)
 })
-// /* route for search get */
-app.get('/search', searchController.getSearch, (req, res) => {
-  //console.log('in app.post in server.js')
+/* route for search get */
+app.get('/search:id', searchController.getSearch, (req, res) => {
   res.json(res.locals.data)
 })
 /* route for search delete */
 app.delete('/search:id', searchController.deleteSearch, (req, res) => {
-  //console.log('in app.post in server.js')
   res.status(200).json({})
 })
 

@@ -13,17 +13,19 @@ CREATE TABLE "Users" (
 );
 
 CREATE TABLE "Search" (
-	"search_id" integer NOT NULL,
+	"search_id" serial NOT NULL,
 	"search_words" varchar(255) NOT NULL,
 	"favorite_search" varchar(255) NOT NULL,
 	"date_searched" TIMESTAMP NOT NULL,
 	"url" varchar(255) NOT NULL,
-	"description" varchar(255) NOT NULL
+	"description" varchar(255) NOT NULL,
+	"user_id" integer NOT NULL,
+	"count_searches" integer NOT NULL
 ) WITH (
   OIDS=FALSE
 );
 
-ALTER TABLE "Search" ADD CONSTRAINT "Search_fk0" FOREIGN KEY ("search_id") REFERENCES "Users"("user_id");
+ALTER TABLE "Search" ADD CONSTRAINT "Search_fk0" FOREIGN KEY ("user_id") REFERENCES "Users"("user_id");
  */
 
 
