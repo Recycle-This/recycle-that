@@ -36,7 +36,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@react-native-community/eslint-config": "0.0.7",
     "babel-preset-expo": "~8.0.0",
+    "eslint-plugin-react-hooks": "^2.4.0",
     "jest-expo": "~36.0.1"
   },
   "private": true
