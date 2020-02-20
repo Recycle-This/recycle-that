@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Header, Item, Icon, Button, Text, Content, List, ListItem, Left, Right } from 'native-base';
-import { SafeAreaView, TouchableHighlight, View, StyleSheet, TextInput } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { TextInput } from 'react-native';
 
 
 const SearchScreen = ({ navigation }) => {
