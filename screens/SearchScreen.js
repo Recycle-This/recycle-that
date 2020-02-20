@@ -28,9 +28,9 @@ const SearchScreen = ({ navigation }) => {
     }
   }
   const top = ['CFL Lightbulbs', 'Paper', 'Aluminum Cans', 'Cardboard', 'Newspapers', 'Plastic Bottles', 'Glass Containers', 'Glossy Magazines', 'Oil-Based Paints', 'Christmas Trees'];
-  let topList = top.map((item, i) => {
+  const topList = top.map((item, i) => {
     return (
-      <ListItem key={i} noIndent style={{ backgroundColor: "white" }}>
+      <ListItem button onPress={() => searchLogic()} key={i} noIndent>
         <Left>
           <Text>{item}</Text>
         </Left>
@@ -48,9 +48,11 @@ const SearchScreen = ({ navigation }) => {
           <TextInput onChangeText={text => setSearchState({ ...searchState, search: text })} placeholder="Search" />
           <Icon name="ios-people" />
         </Item>
-        <Button onPress={() => searchLogic()} transparent>
-          <Text style={{ color: 'white' }}>Go!</Text>
-        </Button>
+        <Right style={{flex: 0.25}}>
+          <Button onPress={() => searchLogic()} transparent>
+            <Text style={{ color: 'white' }}>Go!</Text>
+          </Button>
+        </Right>
       </Header>
       <Content >
         <Text style={{ textAlign: "center", color: "green", fontWeight: "bold", marginTop: 10, marginBottom: 10 }}>Top 10 Recyclables </Text>
