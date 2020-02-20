@@ -58,10 +58,8 @@ export default function App(props) {
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <RootStack.Navigator mode="modal" headerMode="none">
+          <RootStack.Navigator >
             <RootStack.Screen name="Recycle That" component={BottomTabNavigator} options={{ headerShown: false }} />
-            <RootStack.Screen name="Login" component={LoginScreen} />
-            <RootStack.Screen name="Sign Up" component={SignUpScreen} />
           </RootStack.Navigator>
         </NavigationContainer>
       </View>
