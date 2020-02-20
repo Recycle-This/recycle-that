@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableHighlight, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableHighlight,
+  TextInput,
+  StyleSheet,
+  KeyboardAvoidingView
+} from 'react-native';
 
-const SignUpScreen = (props) => {
+
+const SignUpScreen = ({ navigation }) => {
   const [signInState, setSignInState] = useState({
     username: "",
     password: "",
     verifyPassword: ""
   })
+
+  const handleLoginPress = useCallback(() => {
+    navigation.goBack()
+    setTimeout(() => {
+      navigation.navigate('Login')
+    }, 500)
+  });
 
   const checkUsernameLength = () => {
     if (signInState.username.length >= 3) {
