@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { SplashScreen } from 'expo';
+import {
+  View,
+  Platform,
+  StatusBar,
+  StyleSheet,
+} from 'react-native';
 import * as Font from 'expo-font';
+import { SplashScreen } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import BottomTabNavigator from './navigation/BottomTabNavigator';
+import LoginScreen from './screens/LoginScreen';
 import useLinking from './navigation/useLinking';
+import SignUpScreen from './screens/SignUpScreen';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 const RootStack = createStackNavigator();
 
@@ -51,8 +58,10 @@ export default function App(props) {
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <RootStack.Navigator>
-            <RootStack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+          <RootStack.Navigator mode="modal" headerMode="none">
+            <RootStack.Screen name="Recycle That" component={BottomTabNavigator} options={{ headerShown: false }} />
+            <RootStack.Screen name="Login" component={LoginScreen} />
+            <RootStack.Screen name="Sign Up" component={SignUpScreen} />
           </RootStack.Navigator>
         </NavigationContainer>
       </View>
