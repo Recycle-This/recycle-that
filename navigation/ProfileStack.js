@@ -1,9 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import { Image } from 'react-native';
 import ProfileScreen from '../screens/ProfileScreen';
 import LoginScreen from '../screens/LoginScreen'
 
+function LogoTitle() {
+  return (
+    <Image source={require('../assets/images/logo.png')} />
+  );
+}
 const ProfileStack = createStackNavigator();
 const LoginStack = createStackNavigator()
 
@@ -24,3 +29,4 @@ const ProfileScreenStack = ({ navigation, route }) => {
 };
 
 export default ProfileScreenStack;
+
