@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   Container,
   Header,
@@ -12,25 +12,42 @@ import {
   Left,
   Right
 } from 'native-base';
-import { TextInput } from 'react-native';
+import { TextInput, Alert } from 'react-native';
 
 
 const SearchScreen = ({ navigation }) => {
-  const [searchState, setSearchState] = useState({
-    search: ''
-  })
-  const searchLogic = () => {
-    if (searchState.search.length > 0) {
-      navigation.navigate('Details')
-    }
-    else {
-      alert('Please enter a valid search')
+  const [searchInput, setSearchInput] = useState('');
+
+  const handleItemPress = item => {
+    navigation.navigate('Details', {
+      item,
+    });
+  }
+
+  const handleSearchPress = () => {
+    if (searchInput !== '') {
+      // handle search
+    } else {
+      Alert.alert('Invalid Input', 'Please enter a valid search')
     }
   }
-  const top = ['CFL Lightbulbs', 'Paper', 'Aluminum Cans', 'Cardboard', 'Newspapers', 'Plastic Bottles', 'Glass Containers', 'Glossy Magazines', 'Oil-Based Paints', 'Christmas Trees'];
+
+  const top = [
+    'CFL Lightbulbs',
+    'Paper',
+    'Aluminum Cans',
+    'Cardboard',
+    'Newspapers',
+    'Plastic Bottles',
+    'Glass Containers',
+    'Glossy Magazines',
+    'Oil-Based Paints',
+    'Christmas Trees'
+  ];
+
   const topList = top.map((item, i) => {
     return (
-      <ListItem button onPress={() => searchLogic()} key={i} noIndent>
+      <ListItem button onPress={() => handleItemPress(item)} key={i} noIndent>
         <Left>
           <Text>{item}</Text>
         </Left>
@@ -45,11 +62,11 @@ const SearchScreen = ({ navigation }) => {
       <Header searchBar rounded style={{ backgroundColor: "green" }}>
         <Item>
           <Icon name="ios-search" />
-          <TextInput onChangeText={text => setSearchState({ ...searchState, search: text })} placeholder="Search" />
+          <TextInput onChangeText={text => setSearchInput(text)} placeholder="Search" />
           <Icon name="ios-people" />
         </Item>
-        <Right style={{flex: 0.25}}>
-          <Button onPress={() => searchLogic()} transparent>
+        <Right style={{ flex: 0.25 }}>
+          <Button onPress={handleSearchPress} transparent>
             <Text style={{ color: 'white' }}>Go!</Text>
           </Button>
         </Right>
@@ -65,4 +82,3 @@ const SearchScreen = ({ navigation }) => {
 }
 
 export default SearchScreen;
-
