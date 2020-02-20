@@ -40,7 +40,7 @@ app.post('/search', searchController.postSearch, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 /* route for search get */
-app.get('/search', searchController.getSearch, (req, res) => {
+app.get('/search/:id', searchController.getSearch, (req, res) => {
   res.json(res.locals.data)
 })
 /* route for search delete */
