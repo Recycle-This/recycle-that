@@ -4,8 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SearchStackScreen from './SearchStack';
 import ProfileScreenStack from './ProfileStack';
 import TabBarIcon from '../components/TabBarIcon';
-import SignUpScreen from './../screens/SignUpScreen';
-import LoginScreen from './../screens/LoginScreen';
 
 
 const BottomTab = createBottomTabNavigator();
@@ -25,7 +23,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Profile"
-        component={ProfileScreenStack}
+        component={SearchStackScreen}
         options={{
           title: 'Profile',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
