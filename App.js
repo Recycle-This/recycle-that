@@ -11,9 +11,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import LoginScreen from './screens/LoginScreen';
 import useLinking from './navigation/useLinking';
-import SignUpScreen from './screens/SignUpScreen';
+import { AuthProvider } from './contexts/AuthContext';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 
 const RootStack = createStackNavigator();
@@ -55,14 +54,16 @@ export default function App(props) {
     return null;
   } else {
     return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <RootStack.Navigator >
-            <RootStack.Screen name="Recycle That" component={BottomTabNavigator} options={{ headerShown: false }} />
-          </RootStack.Navigator>
-        </NavigationContainer>
-      </View>
+      <AuthProvider>
+        <View style={styles.container}>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
+            <RootStack.Navigator >
+              <RootStack.Screen name="Recycle That" component={BottomTabNavigator} options={{ headerShown: false }} />
+            </RootStack.Navigator>
+          </NavigationContainer>
+        </View>
+      </AuthProvider>
     );
   }
 }
