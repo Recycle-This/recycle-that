@@ -15,7 +15,6 @@ const SearchStackScreen = ({ navigation, route }) => {
   return (
     <SearchStack.Navigator initialRouteName={'Search'} headerTitle={'Recycle'}>
       <SearchStack.Screen name="Recycle That" component={SearchScreen} options={{ headerTitle: props => <LogoTitle {...props} /> }} />
-
       <SearchStack.Screen name="Details" component={DetailsScreen} options={{ headerTitle: props => <LogoTitle {...props} /> }} />
     </SearchStack.Navigator>
   );
