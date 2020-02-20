@@ -3,7 +3,7 @@ import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
   const top10 = ['Batteries', 'Paper', 'Cardboard', 'Newspapers', 'Plastic Bottles', 'Aluminum Cans', 'Glossy Magazines', 'Glass Containers']
-  
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -21,13 +21,12 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          
+
           <Text style={styles.getStartedText}>1. Batteries </Text>
 
           <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
             <MonoText>Click here </MonoText>
           </View>
-
 
         </View>
 
