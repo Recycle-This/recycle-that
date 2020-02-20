@@ -5,17 +5,10 @@ import { SafeAreaView, Text, TouchableHighlight, View, StyleSheet } from 'react-
 const ProfileScreen = ({ navigation, route }) => {
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>This is the Profile Scrfeen</Text>
-      <View>
-        <TouchableHighlight
-          style={styles.navBtn}
-          onPress={() => navigation.navigate('Details')}
-        >
-          <Text>Navigate to Details</Text>
-        </TouchableHighlight>
-      </View>
-    </SafeAreaView>
+    <View>
+      <Text style={{ textAlign: 'center' }}>This is Profile Screen</Text>
+    </View>
+
   );
 };
 
