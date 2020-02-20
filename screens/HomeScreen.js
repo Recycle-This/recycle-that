@@ -28,7 +28,6 @@ export default function HomeScreen() {
             <MonoText>Click here </MonoText>
           </View>
 
-
         </View>
 
         <View style={styles.helpContainer}>
