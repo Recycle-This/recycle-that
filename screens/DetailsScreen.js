@@ -8,7 +8,7 @@ const dataArray = [
   { title: "Third Search", content: "Data to populate" }
 ];
 
-export default class LinksScreen extends Component {
+export default class DetailsScreen extends Component {
   _renderHeader(item, expanded) {
     return (
       <View style={{
