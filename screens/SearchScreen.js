@@ -32,7 +32,7 @@ const SearchScreen = ({ navigation }) => {
     return (
       <ListItem button onPress={() => searchLogic()} key={i} noIndent>
         <Left>
-          <Text>{item}</Text>
+          <Text style={{color:"#505050"}}>{item}</Text>
         </Left>
         <Right>
           <Icon name="arrow-forward" />
