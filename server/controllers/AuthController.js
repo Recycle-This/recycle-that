@@ -1,6 +1,20 @@
 const authController = {};
 const db = require('../models/RecycleModel')
 
+
+/* login verify */
+authController.loginUsers = (req, res, next) => {
+    User.findOne({username : req.body.username, password : req.body.password}, (err, result) => {
+        if (err){
+            res.locals.data = req.body.id
+          } else  {
+            res.locals.data = 'user does not exist'
+          }
+        return next()
+    })
+}
+
+
 /* post users into database */
 authController.postUsers = (req, res, next) => {
     const { username, password, brownie_points } = req.body

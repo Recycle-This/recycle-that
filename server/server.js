@@ -20,6 +20,16 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 // app.get('/', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../App'))
 // })
+/* route for user login check */
+app.post('/login', authController.loginUsers, (req, res) => {
+  if (res.locals.data === 'user does not exist'){
+    res.send(401)
+  } else {
+    res.status(200).json({user_id: res.locals.data})
+  }
+})
+
+
 
 /* route for user post */
 app.post('/users', authController.postUsers, (req, res) => {

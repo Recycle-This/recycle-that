@@ -22,16 +22,18 @@ searchController.postSearch = (req, res, next) => {
 
 /* get seach word data from database */
 searchController.getSearch = (req, res, next) => {
-    const id = req.params.id;
+    const id = req.params.id
     const values = [id]
+
     const text = `
        SELECT * FROM "Search" 
        WHERE user_id = ($1)
        `
+
     db.query(text, values)
+        .then(res => console.log('fetch res', res.rows[0].favorite_search))
         .then(result => {
             res.locals.data = result.rows
-            // console.log(result.rows)
             return next()
         })
         .catch(err => next(err))
