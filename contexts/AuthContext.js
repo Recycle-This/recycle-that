@@ -21,20 +21,40 @@ export const AuthProvider = props => {
               authContext.userId = res.user_id;
               authContext.isSignedIn = true;
               AsyncStorage.setItem('userId', res.user_id);
+              return true;
             }
           })
           .catch(err => console.error(err));
 
       },
-      signOut: () => { },
+      signOut: () => { 
+          if (res.user_id) {
+            authContext.isSignedIn = false;
+            authContext.user_id = null;
+          }       
+      },
+
       signUp: async data => {
-        // In a production app, we need to send user data to server and get a token
-        // We will also need to handle errors if sign up failed
-        // After getting token, we need to persist the token using `AsyncStorage`
-        // In the example, we'll use a dummy token
+        const { username, password} = data
+
+        fetch('http://192.168.0.110:3000/users', {
+          body: JSON.stringify({
+            username,
+            password,
+            brownie_points : 0
+          })
+        })
+        .then(res => res.json())
+        .then(res => {
+          authContext.userId = res.user_id;
+          authContext.isSignedIn = true;
+          return true;
+        })
+        .catch(err => console.error(err))
       },
       isSignedIn: false,
       userId: null,
+      brownie_points: 0
     }),
     []
   );
