@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image } from 'react-native';
 
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { AuthContext } from '../contexts/AuthContext';
 
 const LogoTitle = () => {
   return (
@@ -14,7 +15,9 @@ const LogoTitle = () => {
 
 const ProfileStack = createStackNavigator();
 
-const ProfileScreenStack = ({ navigation, route, isSignedIn }) => {
+const ProfileScreenStack = ({ navigation, route }) => {
+  const { isSignedIn } = useContext(AuthContext);
+
   const navProps = isSignedIn
     ? null
     : {
@@ -23,7 +26,7 @@ const ProfileScreenStack = ({ navigation, route, isSignedIn }) => {
     }
 
   return (
-    <ProfileStack.Navigator initialRouteName={isSignedIn ? 'Profile' : 'Sign Up'} {...navProps} >
+    <ProfileStack.Navigator initialRouteName={isSignedIn ? 'Profile' : 'Login'} {...navProps} >
       {isSignedIn ? (
         <ProfileStack.Screen name="Profile" component={ProfileScreen} options={{ headerTitle: props => <LogoTitle {...props} /> }} />
       ) : (

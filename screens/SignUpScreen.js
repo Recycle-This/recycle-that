@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import {
   View,
   Alert,
@@ -42,7 +42,7 @@ const SignUpScreen = ({ navigation }) => {
   const handleSignUpPress = async () => {
     verifyPassword()
     const signUpStatus = await signUp(signInState)
-    if (signUpStatus){
+    if (signUpStatus) {
       Alert.alert('Successful Signup')
     }
   }
