@@ -1,7 +1,8 @@
 
 import React, {Component} from 'react';
 import { StyleSheet} from 'react-native';
-import { Container, Header, Content, Icon, Accordion, Text, View } from "native-base";
+
+import { Container, Header, Content, Icon, Accordion, Text, View, Button, Right } from "native-base";
 
 const dataArray = [
   { title: "First Search", content: "Data to populate" },
@@ -29,22 +30,29 @@ function renderHeader(item, expanded) {
 
 function renderContent(item) {
   return (
-    <Text
-      style={{
-        backgroundColor: "#e3f1f1",
-        padding: 10,
-        fontStyle: "italic",
-      }}
-    >
-      {item.content}
-    </Text>
+    <View style={{backgroundColor: "#e3f1f1"}}>
+      <Text
+        style={{
+          backgroundColor: "#e3f1f1",
+          padding: 10,
+          fontStyle: "italic",
+        }}
+      >   
+        {item.content}
+      </Text>
+      <Right>
+        <Button iconLeft bordered success style={{backgroundColor: "white"}}>
+          <Icon type="FontAwesome" name="recycle" style = {{color: "green"}}/>
+          <Text>I Recycled this</Text>
+        </Button>
+      </Right>     
+    </View>
   );
 }
 
 export default function DetailsScreen () {
   return (
     <Container>
-      <Header />
       <Content padder style={{ backgroundColor: "white" }}>
         <Accordion
           dataArray={dataArray}

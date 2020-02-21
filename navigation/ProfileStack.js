@@ -1,19 +1,27 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image } from 'react-native';
-import ProfileScreen from '../screens/ProfileScreen';
-import LoginScreen from '../screens/LoginScreen'
 
-function LogoTitle() {
+import LoginScreen from '../screens/LoginScreen';
+import SignUpScreen from '../screens/SignUpScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+
+const LogoTitle = () => {
   return (
     <Image source={require('../assets/images/logo.png')} />
   );
 }
+
 const ProfileStack = createStackNavigator();
 const LoginStack = createStackNavigator()
 
-const ProfileScreenStack = ({ navigation, route }) => {
-  // conditional will be here and return stack if async is found else return other stack
+const ProfileScreenStack = ({ navigation, route, isSignedIn }) => {
+  const navProps = isSignedIn
+    ? null
+    : {
+      mode: 'modal',
+      headerMode: 'none',
+    }
 
   // return (
   //   <ProfileStack.Navigator initialRouteName={'Profile'} >
@@ -21,12 +29,18 @@ const ProfileScreenStack = ({ navigation, route }) => {
   //   </ProfileStack.Navigator>
   // );
   return (
-    <LoginStack.Navigator initialRouteName={'Login'} >
-      <LoginStack.Screen name='Login' component={LoginScreen} />
-    </LoginStack.Navigator>
-  )
-
+    <ProfileStack.Navigator initialRouteName={isSignedIn ? 'Profile' : 'Login'} {...navProps} >
+      {isSignedIn ? (
+        <ProfileStack.Screen name="Profile" component={ProfileScreen} options={{ headerTitle: props => <LogoTitle {...props} /> }} />
+      ) : (
+          <>
+            <ProfileStack.Screen name="Sign Up" component={SignUpScreen} />
+            <ProfileStack.Screen name="Login" component={LoginScreen} />
+          </>
+        )
+      }
+    </ProfileStack.Navigator>
+  );
 };
 
 export default ProfileScreenStack;
-

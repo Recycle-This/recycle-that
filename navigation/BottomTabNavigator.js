@@ -5,6 +5,7 @@ import SearchStackScreen from './SearchStack';
 import ProfileScreenStack from './ProfileStack';
 import TabBarIcon from '../components/TabBarIcon';
 
+
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Search';
 
@@ -24,8 +25,8 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Profile"
         component={ProfileScreenStack}
         options={{
-          title: 'Profile',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Dashboard',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-grid" />,
         }}
       />
     </BottomTab.Navigator>
