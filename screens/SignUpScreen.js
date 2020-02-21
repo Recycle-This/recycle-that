@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import {
   View,
+  Alert,
   Text,
   Image,
   TouchableHighlight,
@@ -18,7 +19,6 @@ const SignUpScreen = ({ navigation }) => {
   })
 
   const handleLoginPress = useCallback(() => {
-    navigation.goBack()
     setTimeout(() => {
       navigation.navigate('Login')
     }, 500)
@@ -26,6 +26,7 @@ const SignUpScreen = ({ navigation }) => {
 
   const checkUsernameLength = () => {
     if (signInState.username.length >= 3) {
+      handlenewUser()
       return verifyPassword();
     } else {
       Alert.alert('Character must be at least 3 characters long')
@@ -39,6 +40,30 @@ const SignUpScreen = ({ navigation }) => {
       Alert.alert('Passwords do not match')
     }
   }
+
+  const handlenewUser = () => {
+    /* add a new user to the database */
+    const usernameText = signInState.username
+    const passwordText = signInState.password
+    //needs to increment when users click brownie/"i recycled" button
+    const brownieCounter = 0
+
+    fetch('http://192.168.0.110:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: usernameText,
+        password: passwordText,
+        brownie_points: brownieCounter
+      })
+    })
+      .then(res => res.json())
+      .catch(err => console.log({ err: 'err in signup post fetch' }))
+  }
+
+
   return (
 
     <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
@@ -58,7 +83,7 @@ const SignUpScreen = ({ navigation }) => {
           <TextInput secureTextEntry={true} style={styles.input} onChangeText={text => setSignInState({ ...signInState, verifyPassword: text })} placeholder="password"></TextInput>
         </View>
         <View>
-          <TouchableHighlight style={styles.buttonContainer} onPress={checkUsernameLength}><Text style={styles.buttonText} >Sign Up</Text></TouchableHighlight>
+          <TouchableHighlight style={styles.buttonContainer} onPress={handleLoginPress}><Text style={styles.buttonText} >Sign Up</Text></TouchableHighlight>
         </View>
 
       </View>

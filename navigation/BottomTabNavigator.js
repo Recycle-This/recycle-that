@@ -5,6 +5,7 @@ import SearchStackScreen from './SearchStack';
 import ProfileScreenStack from './ProfileStack';
 import TabBarIcon from '../components/TabBarIcon';
 
+
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Search';
 
