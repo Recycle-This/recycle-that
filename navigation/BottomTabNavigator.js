@@ -25,8 +25,8 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Profile"
         component={ProfileScreenStack}
         options={{
-          title: 'Profile',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Dashboard',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-grid" />,
         }}
       />
     </BottomTab.Navigator>

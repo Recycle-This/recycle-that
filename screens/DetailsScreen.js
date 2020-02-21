@@ -42,9 +42,9 @@ function renderContent(item) {
         {item.content}
       </Text>
       <Right>
-        <Button iconLeft bordered success style={{ backgroundColor: "white" }}>
-          <Icon name='trash' />
-          <Text>I Recycled this!</Text>
+        <Button iconLeft bordered success style={{backgroundColor: "white"}}>
+          <Icon type="FontAwesome" name="recycle" style = {{color: "green"}}/>
+          <Text>I Recycled this</Text>
         </Button>
       </Right>
     </View>
