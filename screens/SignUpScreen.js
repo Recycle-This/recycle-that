@@ -19,7 +19,6 @@ const SignUpScreen = ({ navigation }) => {
   })
 
   const handleLoginPress = useCallback(() => {
-    navigation.goBack()
     setTimeout(() => {
       navigation.navigate('Login')
     }, 500)
@@ -52,16 +51,16 @@ const SignUpScreen = ({ navigation }) => {
     fetch('http://192.168.0.110:3000/users', {
       method: 'POST',
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         username: usernameText,
         password: passwordText,
         brownie_points: brownieCounter
-        })
+      })
     })
-    .then(res => res.json())
-    .catch(err => console.log({err: 'err in signup post fetch'}))
+      .then(res => res.json())
+      .catch(err => console.log({ err: 'err in signup post fetch' }))
   }
 
 
@@ -84,7 +83,7 @@ const SignUpScreen = ({ navigation }) => {
           <TextInput secureTextEntry={true} style={styles.input} onChangeText={text => setSignInState({ ...signInState, verifyPassword: text })} placeholder="password"></TextInput>
         </View>
         <View>
-          <TouchableHighlight style={styles.buttonContainer} onPress={checkUsernameLength}><Text style={styles.buttonText} >Sign Up</Text></TouchableHighlight>
+          <TouchableHighlight style={styles.buttonContainer} onPress={handleLoginPress}><Text style={styles.buttonText} >Sign Up</Text></TouchableHighlight>
         </View>
 
       </View>
