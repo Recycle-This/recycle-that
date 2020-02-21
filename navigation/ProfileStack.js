@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image } from 'react-native';
 
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { AuthContext } from '../contexts/AuthContext';
 
 const LogoTitle = () => {
   return (
@@ -15,7 +16,9 @@ const LogoTitle = () => {
 const ProfileStack = createStackNavigator();
 const LoginStack = createStackNavigator()
 
-const ProfileScreenStack = ({ navigation, route, isSignedIn }) => {
+const ProfileScreenStack = ({ navigation, route }) => {
+  const { isSignedIn } = useContext(AuthContext);
+
   const navProps = isSignedIn
     ? null
     : {

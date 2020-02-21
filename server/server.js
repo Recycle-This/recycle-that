@@ -8,7 +8,6 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 
-// app.use(bodyparser())
 /**
  * handle parsing request body
  */
@@ -17,18 +16,14 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../App'))
-// })
 /* route for user login check */
 app.post('/login', authController.loginUsers, (req, res) => {
-  if (res.locals.data === 'user does not exist'){
+  if (res.locals.data === 'user does not exist') {
     res.send(401)
   } else {
-    res.status(200).json({user_id: res.locals.data})
+    res.status(200).json({ user_id: res.locals.data })
   }
 })
-
 
 
 /* route for user post */
@@ -50,7 +45,7 @@ app.post('/search', searchController.postSearch, (req, res) => {
   res.status(200).json(res.locals.data)
 })
 /* route for search get */
-app.get('/search/:id', searchController.getSearch, (req, res) => {
+app.get('/search/:item', searchController.getSearch, (req, res) => {
   res.json(res.locals.data)
 })
 /* route for search delete */
