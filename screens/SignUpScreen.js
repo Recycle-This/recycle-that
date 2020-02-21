@@ -9,9 +9,10 @@ import {
   StyleSheet,
   KeyboardAvoidingView
 } from 'react-native';
-
+import { AuthContext } from '../contexts/AuthContext'
 
 const SignUpScreen = ({ navigation }) => {
+  const { signUp } = useContext(AuthContext)
   const [signInState, setSignInState] = useState({
     username: "",
     password: "",
@@ -26,7 +27,6 @@ const SignUpScreen = ({ navigation }) => {
 
   const checkUsernameLength = () => {
     if (signInState.username.length >= 3) {
-      handlenewUser()
       return verifyPassword();
     } else {
       Alert.alert('Character must be at least 3 characters long')
@@ -34,33 +34,17 @@ const SignUpScreen = ({ navigation }) => {
   }
 
   const verifyPassword = () => {
-    if (signInState.verifyPassword === signInState.password && signInState.password.length > 1) {
-      Alert.alert('Successful Signup')
-    } else {
+    if (signInState.verifyPassword !== signInState.password) {
       Alert.alert('Passwords do not match')
     }
   }
 
-  const handlenewUser = () => {
-    /* add a new user to the database */
-    const usernameText = signInState.username
-    const passwordText = signInState.password
-    //needs to increment when users click brownie/"i recycled" button
-    const brownieCounter = 0
-
-    fetch('http://192.168.0.110:3000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: usernameText,
-        password: passwordText,
-        brownie_points: brownieCounter
-      })
-    })
-      .then(res => res.json())
-      .catch(err => console.log({ err: 'err in signup post fetch' }))
+  const handleSignUpPress = async () => {
+    verifyPassword()
+    const signUpStatus = await signUp(signInState)
+    if (signUpStatus){
+      Alert.alert('Successful Signup')
+    }
   }
 
 
@@ -83,7 +67,7 @@ const SignUpScreen = ({ navigation }) => {
           <TextInput secureTextEntry={true} style={styles.input} onChangeText={text => setSignInState({ ...signInState, verifyPassword: text })} placeholder="password"></TextInput>
         </View>
         <View>
-          <TouchableHighlight style={styles.buttonContainer} onPress={handleLoginPress}><Text style={styles.buttonText} >Sign Up</Text></TouchableHighlight>
+          <TouchableHighlight style={styles.buttonContainer} onPress={handleSignUpPress}><Text style={styles.buttonText} >Sign Up</Text></TouchableHighlight>
         </View>
 
       </View>
