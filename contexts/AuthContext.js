@@ -1,7 +1,7 @@
 import React, { createContext, useMemo } from 'react';
 import { AsyncStorage } from 'react-native';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 
 export const AuthProvider = props => {
@@ -27,30 +27,30 @@ export const AuthProvider = props => {
           .catch(err => console.error(err));
 
       },
-      signOut: () => { 
-          if (res.user_id) {
-            authContext.isSignedIn = false;
-            authContext.user_id = null;
-          }       
+      signOut: () => {
+        if (res.user_id) {
+          authContext.isSignedIn = false;
+          authContext.user_id = null;
+        }
       },
 
       signUp: async data => {
-        const { username, password} = data
+        const { username, password } = data
 
         fetch('http://192.168.0.110:3000/users', {
           body: JSON.stringify({
             username,
             password,
-            brownie_points : 0
+            brownie_points: 0
           })
         })
-        .then(res => res.json())
-        .then(res => {
-          authContext.userId = res.user_id;
-          authContext.isSignedIn = true;
-          return true;
-        })
-        .catch(err => console.error(err))
+          .then(res => res.json())
+          .then(res => {
+            authContext.userId = res.user_id;
+            authContext.isSignedIn = true;
+            return true;
+          })
+          .catch(err => console.error(err))
       },
       isSignedIn: false,
       userId: null,

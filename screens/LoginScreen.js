@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import {
   View,
   Text,
@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
-import { AuthContext } from '../contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext';
 
 
 const LoginScreen = ({ navigation }) => {
@@ -18,19 +18,18 @@ const LoginScreen = ({ navigation }) => {
   })
 
 
-  const handleLoginPress = async() => {
+  const handleLoginPress = async () => {
     if (loginState.password !== '' && loginState.username !== '') {
       const signInStatus = await signIn(signInState)
-      if (signUpStatus){
+      if (signUpStatus) {
         Alert.alert('Successful Signup')
       } else {
         Alert.alert('invalid authentication')
       }
-    } 
+    }
   }
 
   const handleSignupPress = useCallback(() => {
-    navigation.goBack()
     setTimeout(() => {
       navigation.navigate('Sign Up')
     }, 500)
@@ -50,7 +49,7 @@ const LoginScreen = ({ navigation }) => {
         <TouchableOpacity onPress={handleLoginPress} style={{ borderColor: 'gray', borderWidth: 1 }}><Text>Login</Text></TouchableOpacity>
       </View>
       <View>
-        <Text>Forgot your login details?</Text><TouchableOpacity onPress={handleLogin} ><Text>Get help signing in.</Text></TouchableOpacity>
+        <Text>Forgot your login details?</Text><TouchableOpacity onPress={handleLoginPress} ><Text>Get help signing in.</Text></TouchableOpacity>
       </View>
       <View>
         <Text>Don't have an account?</Text><TouchableOpacity onPress={handleSignupPress} ><Text>Sign Up.</Text></TouchableOpacity>
