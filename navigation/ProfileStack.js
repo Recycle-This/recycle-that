@@ -14,6 +14,7 @@ const LogoTitle = () => {
 }
 
 const ProfileStack = createStackNavigator();
+const LoginStack = createStackNavigator()
 
 const ProfileScreenStack = ({ navigation, route }) => {
   const { isSignedIn } = useContext(AuthContext);
@@ -25,6 +26,11 @@ const ProfileScreenStack = ({ navigation, route }) => {
       headerMode: 'none',
     }
 
+  // return (
+  //   <ProfileStack.Navigator initialRouteName={'Profile'} >
+  //     <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+  //   </ProfileStack.Navigator>
+  // );
   return (
     <ProfileStack.Navigator initialRouteName={isSignedIn ? 'Profile' : 'Login'} {...navProps} >
       {isSignedIn ? (
