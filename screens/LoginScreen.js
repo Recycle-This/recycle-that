@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import {
   View,
   Text,
@@ -7,30 +7,35 @@ import {
   TouchableOpacity,
   StyleSheet
 } from 'react-native';
+import { AuthContext } from '../contexts/AuthContext';
 
 
 const LoginScreen = ({ navigation }) => {
+  const { signIn } = useContext(AuthContext)
 
   const [loginState, setLoginState] = useState({
     username: '',
     password: ''
   })
 
+
+  const handleLoginPress = async () => {
+    if (loginState.password !== '' && loginState.username !== '') {
+      const signInStatus = await signIn(signInState)
+      if (signUpStatus) {
+        Alert.alert('Successful Signup')
+      } else {
+        Alert.alert('invalid authentication')
+      }
+    }
+  }
+
   const handleSignupPress = useCallback(() => {
-    navigation.goBack()
     setTimeout(() => {
       navigation.navigate('Sign Up')
     }, 500)
   });
 
-  const handleLogin = () => {
-    if (loginState.username !== '' && loginState.password !== '') {
-      alert('Successful Login')
-      handleGetUserData()
-    } else {
-      alert('Please enter a username & password')
-    }
-  }
 
   const handleGetUserData = () => {
     /* get all a users data from database */
