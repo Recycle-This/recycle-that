@@ -42,8 +42,8 @@ function renderContent(item) {
         {item.content}
       </Text>
       <Right>
-        <Button iconLeft bordered success style={{backgroundColor: "white"}}>
-          <Icon type="FontAwesome" name="recycle" style = {{color: "green"}}/>
+        <Button iconLeft bordered success style={{ backgroundColor: "white" }}>
+          <Icon type="FontAwesome" name="recycle" style={{ color: "#23A75B" }} />
           <Text>I Recycled this</Text>
         </Button>
       </Right>
@@ -52,15 +52,15 @@ function renderContent(item) {
 }
 
 export default function DetailsScreen({ route }) {
-  fetch(`http://192.168.0.108:3000/search/${id}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(res => res.json())
-    .then(res => res.rows)
-    .catch(err => console.log({ err: 'err in search get fetch' }))
+  // fetch(`http://192.168.0.108:3000/search/${id}`, {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  // })
+  //   .then(res => res.json())
+  //   .then(res => res)
+  //   .catch(err => console.log({ err: 'err in search get fetch' }))
   console.log(route.params.item)
   return (
     <Container>
