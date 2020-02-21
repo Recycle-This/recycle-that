@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Header,
@@ -17,6 +17,16 @@ import { TextInput, Alert } from 'react-native';
 
 const SearchScreen = ({ navigation }) => {
   const [searchInput, setSearchInput] = useState('');
+  const [top, topOnChange] = useState(['CFL Lightbulbs',
+    'Paper',
+    'Aluminum Cans',
+    'Cardboard',
+    'Newspapers',
+    'Plastic Bottles',
+    'Glass Containers',
+    'Glossy Magazines',
+    'Oil-Based Paints',
+    'Christmas Trees']);
 
   const handleItemPress = item => {
     navigation.navigate('Details', {
@@ -26,24 +36,24 @@ const SearchScreen = ({ navigation }) => {
 
   const handleSearchPress = () => {
     if (searchInput !== '') {
-      // handle search
+      getSearched();
     } else {
       Alert.alert('Invalid Input', 'Please enter a valid search')
     }
   }
+  const getSearched = () => {
+    /* get search result data from database */
+    fetch(`http://192.168.0.108:3000/search/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(res => res.rows)
+      .catch(err => console.log({ err: 'err in search get fetch' }))
+  }
 
-  const top = [
-    'CFL Lightbulbs',
-    'Paper',
-    'Aluminum Cans',
-    'Cardboard',
-    'Newspapers',
-    'Plastic Bottles',
-    'Glass Containers',
-    'Glossy Magazines',
-    'Oil-Based Paints',
-    'Christmas Trees'
-  ];
 
   const topList = top.map((item, i) => {
     return (
@@ -57,14 +67,15 @@ const SearchScreen = ({ navigation }) => {
       </ListItem>
     );
   });
+
   return (
     <Container>
       <Header searchBar rounded style={{ backgroundColor: "#23A75B" }}>
         <Item>
           <Icon name="ios-search" />
           <TextInput onChangeText={text => setSearchInput(text)} placeholder="Search" />
-          <Right style={{marginRight: 10}}>
-          <Icon name="ios-people" />
+          <Right style={{ marginRight: 10 }}>
+            <Icon name="ios-people" />
           </Right>
         </Item>
         <Right style={{ flex: 0.25 }}>

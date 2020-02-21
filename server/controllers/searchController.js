@@ -64,3 +64,4 @@ searchController.deleteSearch = (req, res, next) => {
 }
 
 module.exports = searchController
+
