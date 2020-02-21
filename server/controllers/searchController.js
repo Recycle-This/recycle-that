@@ -13,41 +13,43 @@ searchController.postSearch = (req, res, next) => {
     const values = [search_words, favorite_search, url, description, user_id, count_searches]
 
     db.query(text, values)
-    .then(result => {
-        res.locals.data = result.rows
-        return next()
-    })
-    .catch(err => next(err))
+        .then(result => {
+            res.locals.data = result.rows
+            return next()
+        })
+        .catch(err => next(err))
 }
 
 /* get seach word data from database */
 searchController.getSearch = (req, res, next) => {
+    const id = req.params.id;
+    const values = [id]
     const text = `
        SELECT * FROM "Search" 
        WHERE user_id = ($1)
-       ` 
-
-   db.query(text)
-   .then(result => {
-       res.locals.data = result.rows
-       return next()
-   }) 
-   .catch(err => next(err))
+       `
+    db.query(text, values)
+        .then(result => {
+            res.locals.data = result.rows
+            // console.log(result.rows)
+            return next()
+        })
+        .catch(err => next(err))
 }
 
 
 /* delete seach word data from database */
 searchController.deleteSearch = (req, res, next) => {
-        const id = req.params.id
+    const id = req.params.id
 
-        const values = [id]
-    
-        const text = `
+    const values = [id]
+
+    const text = `
             DELETE FROM "Search"
             WHERE search_id = ($1);
             `
-        
-        db.query(text, values)
+
+    db.query(text, values)
         .then(result => {
             return next()
         })
