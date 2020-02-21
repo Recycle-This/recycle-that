@@ -37,7 +37,7 @@ const pool = new Pool ({
 
 module.exports = {
     query : (text, values, callback) => {
-        console.log('executed query', text)
+        console.log('executed query', text, "values", values)
         return pool.query(text, values, callback)
     }
 }

@@ -31,9 +31,9 @@ searchController.getSearch = (req, res, next) => {
        ` 
 
    db.query(text, values)
-   .then(res => console.log('fetch res', res.rows[0].favorite_search))
-   .then(result => {
+    .then(result => {
        res.locals.data = result.rows
+       console.log('fetch res', res.locals.data)
        return next()
    }) 
    .catch(err => next(err))

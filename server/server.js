@@ -8,7 +8,6 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 
-// app.use(bodyparser())
 /**
  * handle parsing request body
  */
@@ -17,9 +16,6 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../App'))
-// })
 /* route for user login check */
 app.post('/login', authController.loginUsers, (req, res) => {
   if (res.locals.data === 'user does not exist'){
@@ -28,7 +24,6 @@ app.post('/login', authController.loginUsers, (req, res) => {
     res.status(200).json({user_id: res.locals.data})
   }
 })
-
 
 
 /* route for user post */
