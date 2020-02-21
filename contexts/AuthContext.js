@@ -10,7 +10,11 @@ export const AuthProvider = props => {
       signIn: async data => {
         const { username, password } = data;
 
-        fetch('http://..../login', {
+        fetch('http://192.168.0.79:3000/login', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
             username, password
           })
@@ -35,14 +39,18 @@ export const AuthProvider = props => {
       },
 
       signUp: async data => {
-        const { username, password } = data
+        const { username, password } = data;
 
-        fetch('http://192.168.0.110:3000/users', {
+        fetch('http://192.168.0.79:3000/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
             username,
             password,
-            brownie_points: 0
-          })
+            brownie_points: 0,
+          }),
         })
           .then(res => res.json())
           .then(res => {
